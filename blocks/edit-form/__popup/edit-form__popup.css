@@ -1,0 +1,23 @@
+.edit-form__popup {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 430px;
+  min-height: 330px;
+  background: #fff;
+  border-radius: 10px;
+  z-index: 2;
+}
+
+@media screen and (max-width: 600px) {
+  .edit-form__popup {
+    width: 350px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .edit-form__popup {
+    width: 282px;
+    min-height: 322px;
+  }
+}

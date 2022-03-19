@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="copyright" content="Анна М" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <title>Место</title>
+  </head>
+  <body class="page">
+    <header class="header page__header">
+      <a href="#" class="header__logo" target="_blank"></a>
+    </header>
+    <main class="content page__content">
+      <section class="profile content__profile">
+        <img class="profile__image" alt="Фото Жака-Ива Кусто" src="./images/avatar.png"/>
+        <div class="profile__info">
+          <div class="profile__editing">
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <button class="profile__edit-btn" aria-label="edit"></button>
+          </div>
+          <p class="profile__subtitle">Исследователь океана</p>
+        </div>
+        <button class="profile__add-btn" aria-label="add"></button>
+      </section>
+      <ul class="elements content__elements">
+        <li class="element">
+          <img class="element__mask-group" alt="" src="./images/karachaevsk.jpg"/>
+          <h2 class="element__title">Карачаевск</h2>
+          <button class="element__like-btn"></button>
+        </li>
+        <li class="element">
+          <img class="element__mask-group" alt="" src="./images/elbrus.jpg"/>
+          <h2 class="element__title">Гора Эльбрус</h2>
+          <button class="element__like-btn"></button>
+        </li>
+        <li class="element">
+          <img class="element__mask-group" alt="" src="./images/dombai.jpg"/>
+          <h2 class="element__title">Домбай</h2>
+          <button class="element__like-btn"></button>
+        </li>
+        <li class="element">
+          <img class="element__mask-group" alt="" src="./images/elbrus.jpg"/>
+          <h2 class="element__title">Гора Эльбрус</h2>
+          <button class="element__like-btn"></button>
+        </li>
+        <li class="element">
+          <img class="element__mask-group" alt="" src="./images/dombai.jpg"/>
+          <h2 class="element__title">Домбай</h2>
+          <button class="element__like-btn"></button>
+        </li>
+        <li class="element">
+          <img class="element__mask-group" alt="" src="./images/karachaevsk.jpg"/>
+          <h2 class="element__title">Карачаево-Черкессия</h2>
+          <button class="element__like-btn"></button>
+        </li>
+      </ul>
+      <section class="edit-form">
+        <form class="edit-form__popup">
+          <button
+            class="edit-form__close-btn"
+            type="button"
+            aria-label="close"
+          ></button>
+          <h3 class="edit-form__title">Редактировать профиль</h3>
+          <input
+            class="edit-form__item"
+            type="text"
+            name="name"
+            value="Жак-Ив Кусто"
+          />
+          <input
+            class="edit-form__item"
+            type="text"
+            name="position"
+            value="Исследователь океана"
+          />
+          <button
+            class="edit-form__submit-btn"
+            type="submit"
+            aria-label="submit"
+          >
+            Сохранить
+          </button>
+        </form>
+      </section>
+    </main>
+    <footer class="footer page__footer">
+      <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
+    </footer>
+  </body>
+</html>

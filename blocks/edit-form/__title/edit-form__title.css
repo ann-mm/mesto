@@ -1,0 +1,17 @@
+.edit-form__title {
+  font-family: inherit;
+  font-weight: 900;
+  font-size: 1.5em;
+  line-height: 1.21;
+  display: flex;
+  margin: 2px 36px 35px;
+  color: #000;
+}
+
+@media screen and (max-width: 450px) {
+  .edit-form__title {
+    font-size: 1.13em;
+    width: 238px;
+    margin: 5px auto 62px;
+  }
+}
