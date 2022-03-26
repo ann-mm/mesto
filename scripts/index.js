@@ -1,84 +1,45 @@
-// находим форму(попап), кнопку редактирования попапа, кнопку закрытия попапа
+// находим попап, находим форму, кнопку редактирования, кнопку закрытия попапа:
+let popup = document.querySelector(".popup");
 let editForm = document.querySelector(".edit-form");
 let profileEditBtn = document.querySelector(".profile__edit-btn");
 let editFormCloseBtn = editForm.querySelector(".edit-form__close-btn");
 
-// ловим клик по кнопке редактирования профиля profileEditBtn
-// // function EditBtnClick() {
-// // }
-// // profileEditBtn.addEventListener('click', EditBtnClick);
-
-// по клику на кнопку редактирования открываем попап, т.е. заменяем класс формы с "закрытого состояния" на "открытое"
-// // function EditBtnClick() {
-// //  editForm.classList.add("edit-form_opened");
-// // }
-// // profileEditBtn.addEventListener("click", EditBtnClick);
-
-// ловим клик по кнопке закрытия попапа editFormCloseBtn
-// // function CloseBtnClick() {
-// // }
-// // editFormCloseBtn.addEventListener('click', CloseBtnClick);
-
-// по клику на кнопку закрытия попапа удаляем добавленный класс
-// // function CloseBtnClick() {
-// //  editForm.classList.remove("edit-form_opened");
-// // }
-// // editFormCloseBtn.addEventListener("click", CloseBtnClick);
-
-//закрываем попап по нажатию на клавитуре "Esc":
-function onDocumentKeyDown() {
-  if (event.code === "Escape") {
-    CloseBtnClick();
-  }
-}
-
-//объединяем вместе две функции - открываем попап и ловим клики по кнопке "Esc"
-function EditBtnClick() {
-  editForm.classList.add("edit-form_opened");
-  document.addEventListener("keydown", onDocumentKeyDown);
-}
-profileEditBtn.addEventListener("click", EditBtnClick);
-
-//объединяем вместе две функции - закрываем попап и перестаем ловить клики по кнопке "Esc"
-function CloseBtnClick() {
-  editForm.classList.remove("edit-form_opened");
-  document.removeEventListener("keydown", onDocumentKeyDown);
-}
-editFormCloseBtn.addEventListener("click", CloseBtnClick);
-
 //находим в попапе поля, которые будем заполнять:
-let editFormInputs = editForm.querySelectorAll(".edit-form__item");
-// console.log(editFormInputs[0].value);
-// console.log(editFormInputs[1].name);
+let editFormInputFio = editForm.querySelector(".edit-form__item_name_fio");
+let editFormInputJob = editForm.querySelector(".edit-form__item_name_job");
 
-//находим в попапе кнопку "сохранить":
-let editFormSubmitBtn = editForm.querySelector(".edit-form__submit-btn");
+//новые значения value из полей попапа, которые заполнит польз-ль:
+let newFio = document.querySelector(".profile__title");
+let newJob = document.querySelector(".profile__subtitle");
 
-//по клику на кнопку "сохранить" в попапе запускаем несколько действий:
-// editFormSubmitBtn.addEventListener('click', действия);
-
-// 1.находим текущие значения value в полях ввода в попапе:
-// // let name = editFormInputs[0].value;
-// // console.log(name);
-// // let position = editFormInputs[1].value;
-// // console.log(position);
-
-// 2.заменяем текст в блоке "профиль" значениями value из полей попапа:
-// // let newName = document.querySelector(".profile__title");
-// // newName.textContent = editFormInputs[0].value;
-// // let newPosition = document.querySelector(".profile__subtitle");
-// // newPosition.textContent = editFormInputs[1].value;
-
-// 3.закрываем попап:
-// // CloseBtnClick();
-
-function SaveNewText(evt) {
-  evt.preventDefault();
-  let newName = document.querySelector(".profile__title");
-  newName.textContent = editFormInputs[0].value;
-  let newPosition = document.querySelector(".profile__subtitle");
-  newPosition.textContent = editFormInputs[1].value;
-  CloseBtnClick();
+//открываем попап, заполняем инпуты текущими значениями профайла:
+function editBtnClick() {
+  popup.classList.add("popup_opened");
+  editFormInputFio.value = newFio.textContent;
+  editFormInputJob.value = newJob.textContent;
 }
-editFormSubmitBtn.addEventListener("click", SaveNewText);
-editForm.addEventListener("submit", SaveNewText);
+
+//закрываем попап:
+function closeBtnClick() {
+  popup.classList.remove("popup_opened");
+}
+
+//обновляем данные на странице данными формы и закрываем попап:
+function saveNewText(evt) {
+  evt.preventDefault();
+  newFio.textContent = editFormInputFio.value;
+  newJob.textContent = editFormInputJob.value;
+  closeBtnClick();
+}
+
+//ловим клик по кнопке "редактировать":
+profileEditBtn.addEventListener("click", editBtnClick);
+
+//ловим клик по кнопке "закрыть":
+editFormCloseBtn.addEventListener("click", closeBtnClick);
+
+//ловим клик по кнопке "сохранить", в результате:
+//1. отправляем на сервер данные формы ("editForm" теперь является именно формой)
+//2. обновляем данные на странице данными формы
+//3. закрываем попап
+editForm.addEventListener("submit", saveNewText);
