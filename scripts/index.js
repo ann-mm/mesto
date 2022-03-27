@@ -2,7 +2,7 @@
 let popup = document.querySelector(".popup");
 let editForm = document.querySelector(".edit-form");
 let profileEditBtn = document.querySelector(".profile__edit-btn");
-let editFormCloseBtn = editForm.querySelector(".edit-form__close-btn");
+let popupCloseBtn = document.querySelector(".popup__close-btn");
 
 //находим в попапе поля, которые будем заполнять:
 let editFormInputFio = editForm.querySelector(".edit-form__item_name_fio");
@@ -36,7 +36,7 @@ function saveNewText(evt) {
 profileEditBtn.addEventListener("click", editBtnClick);
 
 //ловим клик по кнопке "закрыть":
-editFormCloseBtn.addEventListener("click", closeBtnClick);
+popupCloseBtn.addEventListener("click", closeBtnClick);
 
 //ловим клик по кнопке "сохранить", в результате:
 //1. отправляем на сервер данные формы ("editForm" теперь является именно формой)

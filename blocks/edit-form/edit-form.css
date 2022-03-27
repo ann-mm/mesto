@@ -1,21 +1,5 @@
 .edit-form {
-  position: relative;
   display: flex;
   flex-direction: column;
-  width: 430px;
-  background: #fff;
-  border-radius: 10px;
-  z-index: 2;
-}
-
-@media screen and (max-width: 600px) {
-  .edit-form {
-    width: 350px;
-  }
-}
-
-@media screen and (max-width: 450px) {
-  .edit-form {
-    width: 282px;
-  }
+  width: 100%;
 }

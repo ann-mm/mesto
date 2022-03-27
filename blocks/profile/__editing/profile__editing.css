@@ -8,6 +8,5 @@
 @media screen and (max-width: 700px) {
   .profile__editing {
     justify-content: center;
-    width: 100%;
   }
 }
