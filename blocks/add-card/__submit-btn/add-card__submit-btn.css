@@ -1,0 +1,34 @@
+.add-card__submit-btn {
+  font-weight: 400;
+  font-size: 1.13em;
+  line-height: 1.21;
+  text-align: center;
+  width: 358px;
+  height: 50px;
+  margin: 30px auto 37px;
+  padding: 0;
+  color: #fff;
+  background-color: #000;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.add-card__submit-btn:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 600px) {
+  .add-card__submit-btn {
+    width: 278px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .add-card__submit-btn {
+    width: 238px;
+    height: 46px;
+    font-size: 0.88em;
+    margin: 28px auto 25px;
+  }
+}

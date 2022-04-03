@@ -8,6 +8,7 @@
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/element/element.css);
 @import url(../blocks/edit-form/edit-form.css);
+@import url(../blocks/add-card/add-card.css);
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__container/popup__container.css);
@@ -26,9 +27,13 @@
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/element/__mask-group/element__mask-group.css);
 @import url(../blocks/element/__title/element__title.css);
+@import url(../blocks/element/__del-btn/element__del-btn.css);
 @import url(../blocks/element/__like-btn/element__like-btn.css);
+@import url(../blocks/element/__like-btn/_active/element__like-btn_active.css);
 @import url(../blocks/content/__profile/content__profile.css);
 @import url(../blocks/content/__elements/content__elements.css);
 @import url(../blocks/edit-form/__item/edit-form__item.css);
 @import url(../blocks/edit-form/__submit-btn/edit-form__submit-btn.css);
+@import url(../blocks/add-card/__item/add-card__item.css);
+@import url(../blocks/add-card/__submit-btn/add-card__submit-btn.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);

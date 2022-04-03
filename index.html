@@ -28,40 +28,46 @@
           <img class="element__mask-group" alt="Фото часовни в Карачаевске" src="./images/karachaevsk.jpg"/>
           <h2 class="element__title">Карачаевск</h2>
           <button class="element__like-btn" type="button" aria-label="Лайкнуть"></button>
+          <button class="element__del-btn" type="button" aria-label="Удалить"></button>
         </li>
         <li class="element">
           <img class="element__mask-group" alt="Фото предзакатной горы Эльбрус" src="./images/elbrus.jpg"/>
           <h2 class="element__title">Гора Эльбрус</h2>
           <button class="element__like-btn" type="button" aria-label="Лайкнуть"></button>
+          <button class="element__del-btn" type="button" aria-label="Удалить"></button>
         </li>
         <li class="element">
           <img class="element__mask-group" alt="Фото горного хребта Домбай" src="./images/dombai.jpg"/>
           <h2 class="element__title">Домбай</h2>
           <button class="element__like-btn" type="button" aria-label="Лайкнуть"></button>
+          <button class="element__del-btn" type="button" aria-label="Удалить"></button>
         </li>
         <li class="element">
           <img class="element__mask-group" alt="Фото предзакатной горы Эльбрус" src="./images/elbrus.jpg"/>
           <h2 class="element__title">Гора Эльбрус</h2>
           <button class="element__like-btn" type="button" aria-label="Лайкнуть"></button>
+          <button class="element__del-btn" type="button" aria-label="Удалить"></button>
         </li>
         <li class="element">
           <img class="element__mask-group" alt="Фото горного хребта Домбай" src="./images/dombai.jpg"/>
           <h2 class="element__title">Домбай</h2>
           <button class="element__like-btn" type="button" aria-label="Лайкнуть"></button>
+          <button class="element__del-btn" type="button" aria-label="Удалить"></button>
         </li>
         <li class="element">
           <img class="element__mask-group" alt="Фото часовни в Карачаевске" src="./images/karachaevsk.jpg"/>
           <h2 class="element__title">Карачаево-Черкессия</h2>
           <button class="element__like-btn" type="button" aria-label="Лайкнуть"></button>
+          <button class="element__del-btn" type="button" aria-label="Удалить"></button>
         </li>
       </ul>
     </main>
     <footer class="footer page__footer">
       <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup popup_type_edit-profile">
       <div class="popup__container">
-        <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>
+        <button class="popup__close-btn popup__close-btn_type_edit-profile" type="button" aria-label="Закрыть"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
         <form class="edit-form" name="profileEditForm">
           <input
@@ -80,6 +86,50 @@
         </form>
       </div>
     </div>
+    <div class="popup popup_type_add-card">
+      <div class="popup__container">
+        <button class="popup__close-btn popup__close-btn_type_add-card" type="button" aria-label="Закрыть"></button>
+        <h3 class="popup__title">Новое место</h3>
+        <form class="add-card" name="cardAddingForm">
+          <input
+            class="add-card__item add-card__item_name_objname"
+            type="text"
+            name="objname"
+            value=""
+            placeholder="Название"
+          />
+          <input
+            class="add-card__item add-card__item_name_src"
+            type="text"
+            name="src"
+            value=""
+            placeholder="Ссылка на картинку"
+          />
+          <button class="add-card__submit-btn" type="submit" aria-label="Сохранить">Сохранить</button>
+        </form>
+      </div>
+    </div>
+    <!-- <div class="popup popup_type_view-gallery">
+      <div class="popup__container">
+        <button class="popup__close-btn popup__close-btn_type_view-gallery" type="button" aria-label="Закрыть"></button>
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <form class="edit-form" name="profileEditForm">
+          <input
+            class="edit-form__item edit-form__item_name_fio"
+            type="text"
+            name="fio"
+            value=""
+          />
+          <input
+            class="edit-form__item edit-form__item_name_job"
+            type="text"
+            name="job"
+            value=""
+          />
+          <button class="edit-form__submit-btn" type="submit" aria-label="Сохранить">Сохранить</button>
+        </form>
+      </div>
+    </div> -->
     <script src="./scripts/index.js"></script>
   </body>
 </html>
