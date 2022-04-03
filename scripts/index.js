@@ -117,9 +117,9 @@ cardAddBtn.addEventListener("click", function () {
 // написать
 
 //ловим клик по кнопке лайка (первый раз):
-cardLikeBtn.addEventListener("click", function () {
-  likeCard();
-});
+// cardLikeBtn.addEventListener("click", function () {
+//   likeCard();
+// });
 
 // cardUnlikeBtn.addEventListener("click", function () {
 //   unlikeCard();
