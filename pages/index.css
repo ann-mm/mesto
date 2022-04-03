@@ -30,6 +30,7 @@
 @import url(../blocks/element/__del-btn/element__del-btn.css);
 @import url(../blocks/element/__like-btn/element__like-btn.css);
 @import url(../blocks/element/__like-btn/_active/element__like-btn_active.css);
+@import url(../blocks/element/__link/element__link.css);
 @import url(../blocks/content/__profile/content__profile.css);
 @import url(../blocks/content/__elements/content__elements.css);
 @import url(../blocks/edit-form/__item/edit-form__item.css);

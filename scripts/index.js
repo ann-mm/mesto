@@ -26,69 +26,79 @@ const initialCards = [
   },
 ];
 
-// // создадим из массива объектов массив элементов
-// const oneCard = [];
-// for (let i = 0; i < initialCards.length; i++) {
-//   const listItem = document.createElement('li');
-//   listItem.textContent = initialCards[i];
-//     taskElements[i] = listItem;
-// }
+const cardsList = document.querySelector('.elements');
+const cardTemplate = document.querySelector('.element-template').content;
+
+initialCards.forEach(function (initialCards) {
+  const cardElement = cardTemplate.cloneNode(true);
+  cardElement.querySelector('.element__title').textContent = initialCards.name;
+  cardElement.querySelector('.element__mask-group').alt = initialCards.name;
+  cardElement.querySelector('.element__mask-group').src = initialCards.link;
+  cardsList.append(cardElement);
+});
+
 
 //сохраняем каждый попап в свою переменную:
 let popupEditProfile = document.querySelector(".popup_type_edit-profile");
 let popupAddCard = document.querySelector(".popup_type_add-card");
 let popupViewGallery = document.querySelector(".popup_type_view-gallery");
 
-// находим попап, находим форму ред-ия профиля:
+// находим попап, находим форму ред-ия профиля, форму ред-ия карточки:
 let popup = document.querySelector(".popup");
 let editForm = document.querySelector(".edit-form");
+let cardForm = document.querySelector(".add-card");
 
 // находим кнопку ред-ия, кнопку добавл.карточки, кнопку лайка, кнопку просмотра галереи:
 let profileEditBtn = document.querySelector(".profile__edit-btn");
 let cardAddBtn = document.querySelector(".profile__add-btn");
 let cardLikeBtn = document.querySelector(".element__like-btn");
 
-// дописать
-
 // находим кнопки закрытия попапов:
 let popupEditCloseBtn = document.querySelector(".popup__close-btn_type_edit-profile");
 let popupAddCloseBtn = document.querySelector(".popup__close-btn_type_add-card");
 let popupViewCloseBtn = document.querySelector(".popup__close-btn_type_view-gallery");
 
-//находим в попапе поля, которые будем заполнять:
+//находим в попапе профиля поля, которые будем заполнять:
 let editFormInputFio = editForm.querySelector(".edit-form__item_name_fio");
 let editFormInputJob = editForm.querySelector(".edit-form__item_name_job");
-
 //новые значения value из полей попапа, которые заполнит польз-ль:
 let newFio = document.querySelector(".profile__title");
 let newJob = document.querySelector(".profile__subtitle");
+
+//находим в попапе карточки поля, которые будем заполнять:
+let cardFormInputNameObj = cardForm.querySelector(".add-card__item_name_objname");
+let cardFormInputSrc = cardForm.querySelector(".add-card__item_name_src");
+//новые значения value из полей попапа, которые заполнит польз-ль:
+let newNameObj = document.querySelector(".element__title");
+let newSrc = document.querySelector(".element__mask-group").src;
+
 
 //открываем любой попап:
 function openPopup(popup) {
   popup.classList.add("popup_opened");
 }
-
 //заполняем инпуты текущими значениями профайла:
 function editInputsFirst() {
   editFormInputFio.value = newFio.textContent;
   editFormInputJob.value = newJob.textContent;
 }
-
 //закрываем любой попап:
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
 }
-
 //меняем вид лайка после клика:
 function likeCard() {
-  let cardUnlikeBtn = cardLikeBtn.classList.add("element__like-btn_active");
+  cardLikeBtn.classList.add("element__like-btn_active");
+  let cardUnlikeBtn = cardLikeBtn;
   console.log(cardLikeBtn);
   console.log(cardUnlikeBtn);
 }
 
+
+
 //меняем вид лайка после второго клика, или заменяем одну екнопку на другую??:
 // function unlikeCard() {
-//   cardLikeBtn = cardUnlikeBtn.classList.remove("element__like-btn_active");
+//   cardUnlikeBtn.classList.remove("element__like-btn_active");
 // }
 
 
@@ -121,16 +131,17 @@ function saveNewProfileData(evt) {
   evt.preventDefault();
   newFio.textContent = editFormInputFio.value;
   newJob.textContent = editFormInputJob.value;
-  closePopup(popup);
+  closePopup(popupEditProfile);
 }
 
-// //сохраняем на странице данные карточки, кот.ввели в форме и закрываем попап:
-// function saveNewCardData(evt) {
-//   evt.preventDefault();
-//   // newFio.textContent = editFormInputFio.value;
-//   // newJob.textContent = editFormInputJob.value;
-//   closePopup(popup);
-// }
+
+//сохраняем на странице данные карточки, кот.ввели в форме и закрываем попап:
+function saveNewCardData(evt) {
+  evt.preventDefault();
+  newNameObj.textContent = cardFormInputNameObj.value;
+  document.querySelector(".element__mask-group").src = cardFormInputSrc.value;
+  closePopup(popupAddCard);
+}
 
 //ловим клик по кнопке "закрыть" первого, второго, третьего попапа:
 popupEditCloseBtn.addEventListener("click", function () {
@@ -148,3 +159,4 @@ popupAddCloseBtn.addEventListener("click", function () {
 //2. обновляем данные на странице данными формы
 //3. закрываем попап
 editForm.addEventListener("submit", saveNewProfileData);
+cardForm.addEventListener("submit", saveNewCardData);
