@@ -34,13 +34,15 @@ const cardTemplate = document.querySelector(".element-template").content;
 const popupEditProfile = document.querySelector(".popup_type_edit-profile");
 const popupAddCard = document.querySelector(".popup_type_add-card");
 const popupViewGallery = document.querySelector(".popup_type_view-gallery");
+const popupImg = document.querySelector(".popup__image");
+const popupImgName = document.querySelector(".popup__figcaption");
 
 //находим все попапы, находим форму ред-ия профиля, форму ред-ия карточки:
 const popup = document.querySelector(".popup");
 const editForm = document.querySelector(".edit-form");
 const cardForm = document.querySelector(".add-card");
 
-//находим кнопку ред-ия, кнопку добавл.карточки, кнопку лайка, кнопку удал, кнопку просмотра галереи:
+//находим кнопку ред-ия, кнопку добавл.карточки, кнопку лайка, кнопку удал:
 const profileEditBtn = document.querySelector(".profile__edit-btn");
 const cardAddBtn = document.querySelector(".profile__add-btn");
 const cardLikeBtn = document.querySelector(".element__like-btn");
@@ -65,7 +67,6 @@ const cardFormInputSrc = cardForm.querySelector(".add-card__item_name_src");
 
 //новые значения value из полей попапа, которые заполнит польз-ль:
 const newNameObj = document.querySelector(".element__title");
-// const newSrc = document.querySelector(".element__mask-group");
 
 //выводим на страницу карточки из коробки:
 initialCards.forEach(function (card) {
@@ -73,50 +74,32 @@ initialCards.forEach(function (card) {
   cardElement.querySelector(".element__title").textContent = card.name;
   cardElement.querySelector(".element__mask-group").alt = card.name;
   cardElement.querySelector(".element__mask-group").src = card.link;
+  cardElement.querySelector(".element__link").addEventListener("click", function () {
+    openPopup(popupViewGallery);
+    popupImg.src = card.link;
+    popupImgName.textContent = card.name;
+  });
+
+  popupViewCloseBtn.addEventListener("click", function () {
+    closePopup(popupViewGallery);
+  });
   cardElement.querySelector(".element__like-btn").addEventListener("click", likeCard);
   cardElement.querySelector(".element__del-btn").addEventListener("click", delCard);
   cardsList.append(cardElement);
 });
 
-//открываем любой попап:
-function openPopup(popup) {
-  popup.classList.add("popup_opened");
-}
-
-//заполняем инпуты текущими значениями профайла:
-function editInputsFirst() {
-  editFormInputFio.value = newFio.textContent;
-  editFormInputJob.value = newJob.textContent;
-}
-
-//закрываем любой попап:
-function closePopup(popup) {
-  popup.classList.remove("popup_opened");
-}
-
-//ставим лайк и анлайк по клику:
-function likeCard(evt) {
-  const eventTarget = evt.target;
-  eventTarget.classList.toggle("element__like-btn_active");
-}
-
-//удаляем карточку по клику:
-function delCard(evt) {
-  const cardsList = evt.target.closest(".element");
-  cardsList.remove();
-}
-
-//сохраняем на странице данные профайла, кот.ввели в форме и закрываем попап:
-function saveNewProfileData(evt) {
-  evt.preventDefault();
-  newFio.textContent = editFormInputFio.value;
-  newJob.textContent = editFormInputJob.value;
-  closePopup(popupEditProfile);
-}
-
 //создаем новую карточку объекта
 function createNewCard() {
   const cardElement = cardTemplate.querySelector(".element").cloneNode(true);
+  console.log(cardElement)
+  cardElement.querySelector(".element__link").addEventListener("click", function () {
+    openPopup(popupViewGallery);
+    popupImg.src = cardElement.querySelector(".element__mask-group").src;
+    popupImgName.textContent = cardElement.querySelector(".element__title").textContent;
+  });
+  popupViewCloseBtn.addEventListener("click", function () {
+    closePopup(popupViewGallery);
+  });
   cardElement.querySelector(".element__like-btn").addEventListener("click", likeCard);
   cardElement.querySelector(".element__del-btn").addEventListener("click", delCard);
   return cardElement;
@@ -139,6 +122,42 @@ function saveNewCardData(evt) {
   closePopup(popupAddCard);
 }
 
+//ставим лайк и анлайк по клику:
+function likeCard(evt) {
+  const eventTarget = evt.target;
+  eventTarget.classList.toggle("element__like-btn_active");
+}
+
+//удаляем карточку по клику:
+function delCard(evt) {
+  const cardsList = evt.target.closest(".element");
+  cardsList.remove();
+}
+
+//открываем любой попап:
+function openPopup(popup) {
+  popup.classList.add("popup_opened");
+}
+
+//закрываем любой попап:
+function closePopup(popup) {
+  popup.classList.remove("popup_opened");
+}
+
+//заполняем инпуты текущими значениями профайла:
+function editInputsFirst() {
+  editFormInputFio.value = newFio.textContent;
+  editFormInputJob.value = newJob.textContent;
+}
+
+//сохраняем на странице данные профайла, кот.ввели в форме и закрываем попап:
+function saveNewProfileData(evt) {
+  evt.preventDefault();
+  newFio.textContent = editFormInputFio.value;
+  newJob.textContent = editFormInputJob.value;
+  closePopup(popupEditProfile);
+}
+
 //ловим клик по кнопке открытия попапа "редактировать профиль" и заодно заполняем инпуты:
 profileEditBtn.addEventListener("click", function () {
   editInputsFirst();
@@ -150,11 +169,6 @@ cardAddBtn.addEventListener("click", function () {
   openPopup(popupAddCard);
 });
 
-//ловим клик по кнопке открытия попапа "открыть галерею":
-// cardLink.addEventListener("click", function () {
-//   openPopup(popupViewGallery);
-// });
-
 //ловим клик по кнопке "закрыть" первого, второго, третьего попапа:
 popupEditCloseBtn.addEventListener("click", function () {
   closePopup(popupEditProfile);
@@ -163,10 +177,6 @@ popupEditCloseBtn.addEventListener("click", function () {
 popupAddCloseBtn.addEventListener("click", function () {
   closePopup(popupAddCard);
 });
-
-// popupViewCloseBtn.addEventListener("click", function () {
-//   closePopup(popupViewGallery);
-// });
 
 //ловим клик по кнопке "сохранить профайл" и "сохранить карточку", в результате:
 //1. отправляем на сервер данные формы

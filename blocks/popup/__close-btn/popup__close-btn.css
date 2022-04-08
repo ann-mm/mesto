@@ -1,7 +1,8 @@
 .popup__close-btn {
+  align-self: flex-end;
   position: relative;
   bottom: 40px;
-  right: -438px;
+  right: -40px;
   width: 32px;
   height: 32px;
   padding: 0;
@@ -21,14 +22,8 @@
 @media screen and (max-width: 600px) {
   .popup__close-btn {
     bottom: 36px;
-    right: -350px;
+    right: 0;
     width: 20px;
     height: 20px;
-  }
-}
-
-@media screen and (max-width: 450px) {
-  .popup__close-btn {
-    right: -262px;
   }
 }
