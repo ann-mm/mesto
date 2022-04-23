@@ -30,17 +30,14 @@ const initialCards = [
 const cardsList = document.querySelector(".elements");
 const cardTemplate = document.querySelector(".element-template").content;
 
-//находим каждый попап:
+//находим каждый попап, фото и подпись к нему, форму ред-ия профиля, форму ред-ия карточки:
 const popupEditProfile = document.querySelector(".popup_type_edit-profile");
 const popupAddCard = document.querySelector(".popup_type_add-card");
 const popupViewGallery = document.querySelector(".popup_type_view-gallery");
 const popupImg = document.querySelector(".popup__image");
 const popupImgName = document.querySelector(".popup__figcaption");
-
-//находим все попапы, находим форму ред-ия профиля, форму ред-ия карточки:
-const popup = document.querySelector(".popup");
-const editForm = document.querySelector(".edit-form");
-const cardForm = document.querySelector(".add-card");
+const profileForm = popupEditProfile.querySelector(".form");
+const cardForm = popupAddCard.querySelector(".form");
 
 //находим кнопку ред-ия, кнопку добавл.карточки, кнопку лайка, кнопку удал:
 const profileEditBtn = document.querySelector(".profile__edit-btn");
@@ -54,16 +51,16 @@ const popupAddCloseBtn = document.querySelector(".popup__close-btn_type_add-card
 const popupViewCloseBtn = document.querySelector(".popup__close-btn_type_view-gallery");
 
 //находим в попапе профиля поля, которые будем заполнять:
-const editFormInputFio = editForm.querySelector(".edit-form__item_name_fio");
-const editFormInputJob = editForm.querySelector(".edit-form__item_name_job");
+const profileFormInputFio = profileForm.querySelector(".form__input_name_fio");
+const profileFormInputJob = profileForm.querySelector(".form__input_name_job");
 
 //новые значения value из полей попапа, которые заполнит польз-ль:
 const newFio = document.querySelector(".profile__title");
 const newJob = document.querySelector(".profile__subtitle");
 
 //находим в попапе карточки поля, которые будем заполнять:
-const cardFormInputNameObj = cardForm.querySelector(".add-card__item_name_objname");
-const cardFormInputSrc = cardForm.querySelector(".add-card__item_name_src");
+const cardFormInputObjName = cardForm.querySelector(".form__input_name_objname");
+const cardFormInputObjSrc = cardForm.querySelector(".form__input_name_objsrc");
 
 //новые значения value из полей попапа, которые заполнит польз-ль:
 const newNameObj = document.querySelector(".element__title");
@@ -116,9 +113,9 @@ function addCard() {
 function saveNewCardData(evt) {
   evt.preventDefault();
   const card = addCard();
-  card.querySelector(".element__title").textContent = cardFormInputNameObj.value;
-  card.querySelector(".element__mask-group").src = cardFormInputSrc.value;
-  card.querySelector(".element__mask-group").alt = cardFormInputNameObj.value;
+  card.querySelector(".element__title").textContent = cardFormInputObjName.value;
+  card.querySelector(".element__mask-group").src = cardFormInputObjSrc.value;
+  card.querySelector(".element__mask-group").alt = cardFormInputObjName.value;
   closePopup(popupAddCard);
 }
 
@@ -146,15 +143,21 @@ function closePopup(popup) {
 
 //заполняем инпуты текущими значениями профайла:
 function editInputsFirst() {
-  editFormInputFio.value = newFio.textContent;
-  editFormInputJob.value = newJob.textContent;
+  profileFormInputFio.value = newFio.textContent;
+  profileFormInputJob.value = newJob.textContent;
+}
+
+//очищаем инпуты карточки объекта:
+function cleanInputsFirst() {
+  cardFormInputObjSrc.value = '';
+  cardFormInputObjName.value = '';
 }
 
 //сохраняем на странице данные профайла, кот.ввели в форме и закрываем попап:
 function saveNewProfileData(evt) {
   evt.preventDefault();
-  newFio.textContent = editFormInputFio.value;
-  newJob.textContent = editFormInputJob.value;
+  newFio.textContent = profileFormInputFio.value;
+  newJob.textContent = profileFormInputJob.value;
   closePopup(popupEditProfile);
 }
 
@@ -166,6 +169,7 @@ profileEditBtn.addEventListener("click", function () {
 
 //ловим клик по кнопке открытия попапа "добавить карточку":
 cardAddBtn.addEventListener("click", function () {
+  cleanInputsFirst();
   openPopup(popupAddCard);
 });
 
@@ -182,5 +186,5 @@ popupAddCloseBtn.addEventListener("click", function () {
 //1. отправляем на сервер данные формы
 //2. обновляем данные на странице данными формы
 //3. закрываем попап
-editForm.addEventListener("submit", saveNewProfileData);
+profileForm.addEventListener("submit", saveNewProfileData);
 cardForm.addEventListener("submit", saveNewCardData);

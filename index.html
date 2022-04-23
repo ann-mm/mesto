@@ -26,16 +26,6 @@
 
       <ul class="elements content__elements">
       </ul>
-      <template class="element-template">
-        <li class="element">
-          <a href="#" class="element__link">
-            <img class="element__mask-group" alt="" src="#"/>
-          </a>
-          <h2 class="element__title"></h2>
-          <button class="element__like-btn" type="button" aria-label="Лайкнуть"></button>
-          <button class="element__del-btn" type="button" aria-label="Удалить"></button>
-        </li>
-      </template>
 
     </main>
     <footer class="footer page__footer">
@@ -45,20 +35,20 @@
       <div class="popup__container">
         <button class="popup__close-btn popup__close-btn_type_edit-profile" type="button" aria-label="Закрыть"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <form class="edit-form" name="profileEditForm">
+        <form class="form" name="profileEditForm">
           <input
-            class="edit-form__item edit-form__item_name_fio"
+            class="form__input form__input_name_fio"
             type="text"
             name="fio"
             value=""
           />
           <input
-            class="edit-form__item edit-form__item_name_job"
+            class="form__input form__input_name_job"
             type="text"
             name="job"
             value=""
           />
-          <button class="edit-form__submit-btn" type="submit" aria-label="Сохранить">Сохранить</button>
+          <button class="form__submit-btn" type="submit" aria-label="Сохранить">Сохранить</button>
         </form>
       </div>
     </div>
@@ -66,22 +56,22 @@
       <div class="popup__container">
         <button class="popup__close-btn popup__close-btn_type_add-card" type="button" aria-label="Закрыть"></button>
         <h3 class="popup__title">Новое место</h3>
-        <form class="add-card" name="cardAddingForm">
+        <form class="form" name="cardAddingForm">
           <input
-            class="add-card__item add-card__item_name_objname"
+            class="form__input form__input_name_objname"
             type="text"
             name="objname"
             value=""
             placeholder="Название"
           />
           <input
-            class="add-card__item add-card__item_name_src"
+            class="form__input form__input_name_objsrc"
             type="text"
             name="src"
             value=""
             placeholder="Ссылка на картинку"
           />
-          <button class="add-card__submit-btn" type="submit" aria-label="Сохранить">Сохранить</button>
+          <button class="form__submit-btn" type="submit" aria-label="Сохранить">Сохранить</button>
         </form>
       </div>
     </div>
@@ -92,6 +82,16 @@
         <figcaption class="popup__figcaption"></figcaption>
       </figure>
     </div>
+    <template class="element-template">
+      <li class="element">
+        <a href="#" class="element__link">
+          <img class="element__mask-group" alt="" src="#"/>
+        </a>
+        <h2 class="element__title"></h2>
+        <button class="element__like-btn" type="button" aria-label="Лайкнуть"></button>
+        <button class="element__del-btn" type="button" aria-label="Удалить"></button>
+      </li>
+    </template>
 
     <script src="./scripts/index.js"></script>
   </body>
